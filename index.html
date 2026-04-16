@@ -77,6 +77,7 @@
   --aval:#D97706;--aval-glow:rgba(217,119,6,0.2);
   --energy:#10B981;--energy-glow:rgba(16,185,129,0.25);--energy-text:#6EE7B7;
   --tech:#8B5CF6;--tech-glow:rgba(139,92,246,0.25);--tech-text:#A78BFA;
+  --petro:#E11D48;--petro-glow:rgba(225,29,72,0.25);--petro-text:#FB7185;
   --font-d:'Space Grotesk',sans-serif;--font-b:'Inter',sans-serif;
   --radius:14px;--radius-sm:8px;--tr:0.4s cubic-bezier(0.22,0.61,0.36,1);
   --white-02:rgba(255,255,255,0.02);--white-03:rgba(255,255,255,0.03);--white-04:rgba(255,255,255,0.04);
@@ -632,6 +633,10 @@ html{scrollbar-width:thin;scrollbar-color:#8B5CF6 #080E1A}
                     <div class="mega-icon" style="background:rgba(16,185,129,0.1);color:#10B981"><i class="fas fa-bolt"></i></div>
                     <div class="mega-link-text"><h4>Énergies · Électricité <span class="mega-badge mega-badge-green">Filiale</span></h4><p data-i18n="" data-en="Gas power plants, solar, microgrids, BESS">Centrales gaz, solaire, micro-grids, BESS</p></div>
                   </a>
+                  <a href="https://enertchad-petrochimie.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:rgba(225,29,72,0.1);color:var(--petro)"><i class="fas fa-flask-vial"></i></div>
+                    <div class="mega-link-text"><h4>Pétrochimie <span class="mega-badge" style="background:rgba(225,29,72,0.12);color:var(--petro);border-color:rgba(225,29,72,0.2)">Chimie</span></h4><p data-i18n="" data-en="Polymers, fertilizers, base chemicals">Polymères, engrais, chimie de base</p></div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -703,6 +708,7 @@ html{scrollbar-width:thin;scrollbar-color:#8B5CF6 #080E1A}
     <a href="https://enertchad-midstream-vercel-app.vercel.app" target="_blank" rel="noopener" class="mn-link"><div class="mn-link-ic" style="background:rgba(14,165,233,0.1);color:var(--midstream)"><i class="fas fa-pipe-section"></i></div><div class="mn-link-text"><span class="mn-link-name">Intermédiaire · Transport</span></div></a>
     <a href="https://enertchad-aval-vercel-app.vercel.app" target="_blank" rel="noopener" class="mn-link"><div class="mn-link-ic" style="background:rgba(217,119,6,0.1);color:var(--aval)"><i class="fas fa-gas-pump"></i></div><div class="mn-link-text"><span class="mn-link-name">Aval · Distribution</span></div></a>
     <a href="https://enertchad-energies.vercel.app" target="_blank" rel="noopener" class="mn-link"><div class="mn-link-ic" style="background:rgba(16,185,129,0.1);color:#10B981"><i class="fas fa-bolt"></i></div><div class="mn-link-text"><span class="mn-link-name">Énergies · Électricité</span></div></a>
+    <a href="https://enertchad-petrochimie.vercel.app" target="_blank" rel="noopener" class="mn-link"><div class="mn-link-ic" style="background:rgba(225,29,72,0.1);color:var(--petro)"><i class="fas fa-flask-vial"></i></div><div class="mn-link-text"><span class="mn-link-name">Pétrochimie · Chimie</span></div></a>
     <!-- Lang -->
     <div style="display:flex;gap:8px;padding:16px;margin-top:auto">
       <button class="lang-btn active" data-lang="fr" style="flex:1;padding:12px;border-radius:10px;border:1px solid var(--white-06);background:var(--accent-08);color:var(--accent-light);font-family:var(--font-d);font-size:0.82rem;font-weight:600;cursor:pointer">FR</button>
@@ -1027,7 +1033,8 @@ var ENERTCHAD={
   midstream:'https://enertchad-midstream-vercel-app.vercel.app',
   aval:'https://enertchad-aval-vercel-app.vercel.app',
   energies:'https://enertchad-energies.vercel.app',
-  tech:'https://enertchad-technologies.vercel.app'
+  tech:'https://enertchad-technologies.vercel.app',
+  petrochimie:'https://enertchad-petrochimie.vercel.app'
 };
 
 /* ═══ SCROLL PROGRESS ═══ */
@@ -1329,7 +1336,8 @@ if(form){
    {title:'EnerTchad Amont',desc:'E&P · Doba & Bongor',icon:'fas fa-oil-well',url:ENERTCHAD.amont,color:'#2E86DE'},
    {title:'EnerTchad Intermédiaire',desc:'Pipeline 1 070 km',icon:'fas fa-pipe-section',url:ENERTCHAD.midstream,color:'#0EA5E9'},
    {title:'EnerTchad Aval',desc:'45 stations',icon:'fas fa-gas-pump',url:ENERTCHAD.aval,color:'#D97706'},
-   {title:'EnerTchad Énergies',desc:'125 MW · Solaire',icon:'fas fa-bolt',url:ENERTCHAD.energies,color:'#10B981'}
+   {title:'EnerTchad Énergies',desc:'125 MW · Solaire',icon:'fas fa-bolt',url:ENERTCHAD.energies,color:'#10B981'},
+   {title:'EnerTchad Pétrochimie',desc:'Polymères · Engrais · Chimie',icon:'fas fa-flask-vial',url:ENERTCHAD.petrochimie,color:'var(--petro,#E11D48)'}
   ].forEach(function(s){index.push({type:'filiale',icon:s.icon,title:s.title,desc:s.desc,url:s.url,group:'Filiales',color:s.color})});
   var focusIdx=-1;
   function open(){overlay.classList.add('active');input.value='';input.focus();render('');focusIdx=-1}
