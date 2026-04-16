@@ -484,6 +484,33 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
   .dash-grid{grid-template-columns:1fr}
   .hero-actions{flex-direction:column;align-items:center}
 }
+
+/* ═══ PREMIUM: Scroll-reveal ═══ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.22,0.61,0.36,1),transform 0.8s cubic-bezier(0.22,0.61,0.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 0.8s cubic-bezier(0.22,0.61,0.36,1),transform 0.8s cubic-bezier(0.22,0.61,0.36,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.7s cubic-bezier(0.22,0.61,0.36,1),transform 0.7s cubic-bezier(0.22,0.61,0.36,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.stagger>.reveal:nth-child(1){transition-delay:0s}
+.stagger>.reveal:nth-child(2){transition-delay:0.1s}
+.stagger>.reveal:nth-child(3){transition-delay:0.15s}
+.stagger>.reveal:nth-child(4){transition-delay:0.2s}
+.stagger>.reveal:nth-child(5){transition-delay:0.25s}
+.stagger>.reveal:nth-child(6){transition-delay:0.3s}
+.card-3d{transition:transform 0.5s cubic-bezier(0.22,0.61,0.36,1),box-shadow 0.5s cubic-bezier(0.22,0.61,0.36,1);will-change:transform}
+.card-3d:hover{transform:translateY(-8px) perspective(800px) rotateX(2deg);box-shadow:0 30px 80px rgba(0,0,0,0.35)}
+@keyframes btnShine{0%{left:-100%}100%{left:200%}}
+.btn-premium{position:relative;overflow:hidden}
+.btn-premium::after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent)}
+.btn-premium:hover::after{animation:btnShine 0.8s ease-out}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#080E1A}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#8B5CF6,#A78BFA);border-radius:4px}
+html{scrollbar-width:thin;scrollbar-color:#8B5CF6 #080E1A}
+.social-icon{transition:transform 0.3s ease,filter 0.3s ease}
+.social-icon:hover{transform:translateY(-3px) scale(1.15);filter:drop-shadow(0 4px 12px rgba(139,92,246,0.3))}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal-left,.reveal-scale{opacity:1;transform:none;transition:none}}
 </style>
 <script defer data-domain="enertchad-technologies.vercel.app" src="https://plausible.io/js/script.js"></script>
 </head>
@@ -624,7 +651,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
         <button class="lang-btn active" data-lang="fr" aria-pressed="true">FR</button>
         <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
       </div>
-      <a class="nav-cta" href="#contact" data-i18n="" data-en="Request a demo"><i class="fas fa-play-circle"></i> Démo</a>
+      <a class="nav-cta btn-premium" href="#contact" data-i18n="" data-en="Request a demo"><i class="fas fa-play-circle"></i> Démo</a>
     </nav>
     <button class="mob-tog" aria-label="Menu mobile" aria-expanded="false"><i class="fas fa-bars"></i></button>
   </div>
@@ -675,7 +702,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
       <button class="lang-btn" data-lang="en" style="flex:1;padding:12px;border-radius:10px;border:1px solid var(--white-06);background:var(--white-02);color:var(--white-55);font-family:var(--font-d);font-size:0.82rem;font-weight:600;cursor:pointer">EN</button>
     </div>
   </div>
-  <div class="mn-cta-wrap"><a class="mn-cta" href="#contact"><i class="fas fa-play-circle"></i> <span data-i18n="" data-en="Request a demo">Demander une démo</span></a></div>
+  <div class="mn-cta-wrap"><a class="mn-cta btn-premium" href="#contact"><i class="fas fa-play-circle"></i> <span data-i18n="" data-en="Request a demo">Demander une démo</span></a></div>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -686,8 +713,8 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
     <h1 data-i18n="" data-en="The <span class='gradient'>Digital Brain</span> of Chad's Energy">Le <span class="gradient">Cerveau Digital</span> de l'Énergie Tchadienne</h1>
     <p class="hero-sub" data-i18n="" data-en="Digital Twin, SCADA, predictive AI, OT cybersecurity — 18 solutions powering the entire EnerTchad value chain.">Digital Twin, SCADA, IA prédictive, cybersécurité OT — 18 solutions au service de toute la chaîne de valeur EnerTchad.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="#solutions" data-i18n="" data-en="Explore Solutions"><i class="fas fa-cube"></i> Explorer les Solutions</a>
-      <a class="btn-outline" href="#dashboard" data-i18n="" data-en="Live Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard Live</a>
+      <a class="btn-primary btn-premium" href="#solutions" data-i18n="" data-en="Explore Solutions"><i class="fas fa-cube"></i> Explorer les Solutions</a>
+      <a class="btn-outline btn-premium" href="#dashboard" data-i18n="" data-en="Live Dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard Live</a>
     </div>
     <div class="hero-kpis">
       <div class="hero-kpi"><span class="hero-kpi-val" data-count="18">0</span><small data-i18n="" data-en="solutions deployed">solutions déployées</small></div>
@@ -700,84 +727,84 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
 
 <!-- ═══ SOLUTIONS ═══ -->
 <section class="section" id="solutions">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge"><i class="fas fa-cubes"></i> <span data-i18n="" data-en="Solutions Portfolio">Portefeuille Solutions</span></div>
     <h2 class="section-title" data-i18n="" data-en="18 Solutions, One Platform">18 Solutions, Une Plateforme</h2>
     <p class="section-sub" data-i18n="" data-en="End-to-end digital transformation for oil & gas operations.">Transformation digitale bout en bout pour les opérations pétrolières & gazières.</p>
   </div>
-  <div class="sol-grid">
+  <div class="sol-grid stagger">
     <!-- Digital Twin -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-cube"></i></div>
       <h3 data-i18n="" data-en="Digital Twin">Digital Twin</h3>
       <p data-i18n="" data-en="Real-time 3D models of Doba & Bongor reservoirs, 1,070 km pipeline network, and Djermaya refinery (20,000 bbl/day). Physics-based simulation with live 12,840+ SCADA sensor feeds for scenario planning, optimization, and production forecasting. Market growing 60.6% CAGR to $73.5B by 2027.">Modèles 3D temps réel des réservoirs Doba & Bongor, réseau pipeline 1 070 km et raffinerie Djermaya (20 000 bbl/jour). Simulation physique avec flux de 12 840+ capteurs SCADA en direct pour planification scénarios, optimisation et prévision production. Marché en croissance 60,6% CAGR à 73,5 Md$ en 2027.</p>
       <div class="sol-tags"><span class="sol-tag">Réservoir</span><span class="sol-tag">Pipeline</span><span class="sol-tag">Station</span><span class="sol-tag">3D</span></div>
     </div>
     <!-- SCADA & IoT -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-network-wired"></i></div>
       <h3 data-i18n="" data-en="SCADA & Industrial IoT">SCADA & IoT Industriel</h3>
       <p data-i18n="" data-en="12,840+ IIoT sensors monitoring Chad-Cameroon & Ronier-Djermaya pipelines, Djermaya SCADA refinery operations (20,000 bbl/day), drilling sites in Doba/Bongor, and distribution networks. Sub-50ms latency with edge computing for real-time industrial control. Continuous data transmission and analysis via cloud.">12 840+ capteurs IIoT surveillant pipelines Tchad-Cameroun & Ronier-Djermaya, opérations SCADA raffinerie Djermaya (20 000 bbl/jour), sites de forage Doba/Bongor et réseaux de distribution. Latence &lt;50ms avec edge computing pour contrôle industriel temps réel. Transmission et analyse données continu via cloud.</p>
       <div class="sol-tags"><span class="sol-tag">12 840 capteurs</span><span class="sol-tag">&lt;50ms</span><span class="sol-tag">Edge</span></div>
     </div>
     <!-- IA Prédictive -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-brain"></i></div>
       <h3 data-i18n="" data-en="Predictive AI & ML">IA Prédictive & ML</h3>
       <p data-i18n="" data-en="18 ML models in production enabling early warning systems for pipeline failures and well anomalies. 1.2M daily predictions reducing unplanned downtime by 40%. Predictive maintenance and production optimization across Doba basin, Bongor, and refinery operations.">18 modèles ML en production pour systèmes d'alerte précoce sur défaillances pipeline et anomalies puits. 1,2M prédictions/jour réduisant arrêts imprévus de 40%. Maintenance prédictive et optimisation production sur bassin de Doba, Bongor et opérations raffinerie.</p>
       <div class="sol-tags"><span class="sol-tag">18 modèles</span><span class="sol-tag">1.2M préd/j</span><span class="sol-tag">−40% arrêts</span></div>
     </div>
     <!-- Cybersécurité -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-shield-halved"></i></div>
       <h3 data-i18n="" data-en="OT/IoT Cybersecurity">Cybersécurité OT/IoT</h3>
       <p data-i18n="" data-en="Critical security for Chad oil infrastructure. Zero-trust architecture for operational technology controlling 1,070 km pipelines and SCADA systems. IEC 62443 compliant with network segmentation, intrusion detection, anomaly detection, and 24/7 SOC monitoring.">Sécurité critique pour infrastructure pétrolière tchadienne. Architecture zero-trust pour technologies opérationnelles contrôlant 1 070 km de pipelines et systèmes SCADA. Conforme IEC 62443 avec segmentation réseau, détection d'intrusions, détection d'anomalies et surveillance SOC 24/7.</p>
       <div class="sol-tags"><span class="sol-tag">Zero-trust</span><span class="sol-tag">IEC 62443</span><span class="sol-tag">SOC 24/7</span></div>
     </div>
     <!-- Cloud & Edge -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-cloud"></i></div>
       <h3 data-i18n="" data-en="Cloud & Edge Computing">Cloud & Edge Computing</h3>
       <p data-i18n="" data-en="Sovereign cloud with 86 edge nodes optimized for Chad's limited 125 MW national infrastructure. Hybrid architecture minimizes cloud dependency, enabling real-time processing at drilling sites, pipeline stations, and refineries without relying on weak national grid.">Cloud souverain avec 86 nœuds edge optimisés pour l'infrastructure limitée du Tchad (125 MW national). Architecture hybride minimisant la dépendance cloud, permettant traitement temps réel sur sites de forage, stations pipeline et raffineries sans dépendre du réseau national faible.</p>
       <div class="sol-tags"><span class="sol-tag">86 edge nodes</span><span class="sol-tag">Souverain</span><span class="sol-tag">Hybride</span></div>
     </div>
     <!-- Data Analytics -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-chart-line"></i></div>
       <h3 data-i18n="" data-en="Data Analytics & BI">Data Analytics & BI</h3>
       <p data-i18n="" data-en="4.8 TB processed daily. Real-time dashboards, production analytics, and decision intelligence for operations managers across all filiales.">4,8 TB traitées quotidiennement. Tableaux de bord temps réel, analytics de production et intelligence décisionnelle pour les responsables opérationnels de toutes les filiales.</p>
       <div class="sol-tags"><span class="sol-tag">4.8 TB/j</span><span class="sol-tag">BI</span><span class="sol-tag">Temps réel</span></div>
     </div>
     <!-- Automatisation -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-robot"></i></div>
       <h3 data-i18n="" data-en="Automation & Robotics">Automatisation & Robotique</h3>
       <p data-i18n="" data-en="Drone inspection, robotic pipeline monitoring, and process automation. RPA for back-office operations reducing manual tasks by 65%.">Inspection par drone, surveillance robotique de pipeline et automatisation de processus. RPA pour opérations back-office réduisant les tâches manuelles de 65%.</p>
       <div class="sol-tags"><span class="sol-tag">Drones</span><span class="sol-tag">RPA</span><span class="sol-tag">−65% manuel</span></div>
     </div>
     <!-- Connectivité -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-satellite-dish"></i></div>
       <h3 data-i18n="" data-en="Connectivity & Networks">Connectivité & Réseaux</h3>
       <p data-i18n="" data-en="Industrial VSAT, 4G/5G private networks, and fiber backbone connecting remote sites. Redundant communications with 99.9% availability.">VSAT industriel, réseaux privés 4G/5G et backbone fibre connectant les sites isolés. Communications redondantes avec 99,9% de disponibilité.</p>
       <div class="sol-tags"><span class="sol-tag">VSAT</span><span class="sol-tag">5G privé</span><span class="sol-tag">99.9%</span></div>
     </div>
     <!-- EOR IA Prédictive -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-flask"></i></div>
       <h3 data-i18n="" data-en="Predictive AI for EOR">IA Prédictive pour EOR</h3>
       <p data-i18n="" data-en="Machine learning models predicting water breakthrough timing, ESP failure probability, optimal ASP slug scheduling, and polymer concentration. Trained on 300+ well histories across Doba &amp; Bongor basins for +8-17% incremental recovery.">Modèles ML prédisant le timing de percée d'eau, la probabilité de défaillance ESP, le calendrier optimal des slugs ASP et la concentration en polymères. Entraînés sur l'historique de 300+ puits Doba &amp; Bongor pour +8-17 % de récupération incrémentale.</p>
       <div class="sol-tags"><span class="sol-tag">ML / ASP</span><span class="sol-tag">Water Breakthrough</span><span class="sol-tag">+17% OOIP</span></div>
     </div>
     <!-- Digital Twin Réservoir EOR -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-water"></i></div>
       <h3 data-i18n="" data-en="EOR Reservoir Digital Twin">Jumeau Numérique Réservoir EOR</h3>
       <p data-i18n="" data-en="Real-time reservoir simulation (Eclipse/CMG) integrating SCADA, well tests and production data for ASP/thermal EOR optimization. Simulates natron alkaline slug propagation, polymer front tracking, and CSS steam chest evolution in Bongor heavy oil.">Simulation réservoir temps réel (Eclipse/CMG) intégrant SCADA, tests de puits et données de production pour l'optimisation EOR ASP/thermique. Simule la propagation du slug alcalin natron, le suivi du front polymère et l'évolution de la chambre vapeur CSS dans le brut lourd de Bongor.</p>
       <div class="sol-tags"><span class="sol-tag">Eclipse / CMG</span><span class="sol-tag">ASP Simulation</span><span class="sol-tag">CSS Bongor</span></div>
     </div>
     <!-- Laboratoire Biosurfactant -->
-    <div class="sol-card" data-r>
+    <div class="sol-card card-3d reveal" data-r>
       <div class="sol-icon"><i class="fas fa-flask-vial"></i></div>
       <h3 data-i18n="" data-en="Biosurfactant &amp; Local Chemistry Lab">Laboratoire Biosurfactant &amp; Chimie Locale</h3>
       <p data-i18n="" data-en="R&amp;D facility for EOR chemical formulations from Chadian resources: Borkou natron (alkaline agent), neem/karité biosurfactants, cotton cellulose polymers (CMC/HEC), Lake Chad spirulina MEOR screening. Target: 100% local sourcing of EOR chemicals by 2032.">Centre R&amp;D pour formulations chimiques EOR à partir de ressources tchadiennes : natron du Borkou (agent alcalin), biosurfactants neem/karité, polymères cellulose coton (CMC/HEC), screening MEOR spiruline du lac Tchad. Objectif : sourcing 100 % local des produits chimiques EOR d'ici 2032.</p>
@@ -788,18 +815,18 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
 
 <!-- ═══ DASHBOARD ═══ -->
 <section class="section dash" id="dashboard">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge"><i class="fas fa-tachometer-alt"></i> <span data-i18n="" data-en="Live Metrics">Métriques Live</span></div>
     <h2 class="section-title" data-i18n="" data-en="Technology Dashboard">Dashboard Technologique</h2>
     <p class="section-sub" data-i18n="" data-en="Real-time monitoring of EnerTech platform performance.">Surveillance temps réel de la performance de la plateforme EnerTech.</p>
   </div>
-  <div class="dash-grid">
-    <div class="dash-card"><span class="dash-val" data-count="99" data-suffix=".97%">0</span><span class="dash-label" data-i18n="" data-en="Platform Uptime">Uptime Plateforme</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +0.02%</span></div>
-    <div class="dash-card"><span class="dash-val" data-count="12840" data-suffix="">0</span><span class="dash-label" data-i18n="" data-en="Connected Sensors">Capteurs Connectés</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +340</span></div>
-    <div class="dash-card"><span class="dash-val" data-count="38" data-suffix="ms">0</span><span class="dash-label" data-i18n="" data-en="Avg SCADA Latency">Latence SCADA Moy.</span><span class="dash-trend up"><i class="fas fa-arrow-down"></i> −12ms</span></div>
-    <div class="dash-card"><span class="dash-val" data-count="98" data-suffix="%">0</span><span class="dash-label" data-i18n="" data-en="Pipeline Integrity">Intégrité Pipeline</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +3.2%</span></div>
+  <div class="dash-grid stagger">
+    <div class="dash-card reveal"><span class="dash-val" data-count="99" data-suffix=".97%">0</span><span class="dash-label" data-i18n="" data-en="Platform Uptime">Uptime Plateforme</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +0.02%</span></div>
+    <div class="dash-card reveal"><span class="dash-val" data-count="12840" data-suffix="">0</span><span class="dash-label" data-i18n="" data-en="Connected Sensors">Capteurs Connectés</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +340</span></div>
+    <div class="dash-card reveal"><span class="dash-val" data-count="38" data-suffix="ms">0</span><span class="dash-label" data-i18n="" data-en="Avg SCADA Latency">Latence SCADA Moy.</span><span class="dash-trend up"><i class="fas fa-arrow-down"></i> −12ms</span></div>
+    <div class="dash-card reveal"><span class="dash-val" data-count="98" data-suffix="%">0</span><span class="dash-label" data-i18n="" data-en="Pipeline Integrity">Intégrité Pipeline</span><span class="dash-trend up"><i class="fas fa-arrow-up"></i> +3.2%</span></div>
   </div>
-  <div class="dash-chart-wrap">
+  <div class="dash-chart-wrap reveal">
     <div class="dash-chart-box">
       <canvas id="dashChart" aria-label="Graphique des performances technologiques" role="img"></canvas>
     </div>
@@ -808,13 +835,13 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
 
 <!-- ═══ PLATFORM ARCHITECTURE ═══ -->
 <section class="section" id="platform">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge"><i class="fas fa-layer-group"></i> <span data-i18n="" data-en="Architecture">Architecture</span></div>
     <h2 class="section-title" data-i18n="" data-en="Platform Architecture">Architecture de la Plateforme</h2>
     <p class="section-sub" data-i18n="" data-en="4 layers powering the entire EnerTchad digital ecosystem.">4 couches alimentant tout l'écosystème digital EnerTchad.</p>
   </div>
   <div class="arch-grid">
-    <div class="arch-layer" data-layer="Layer 1">
+    <div class="arch-layer reveal-left" data-layer="Layer 1">
       <h3><i class="fas fa-satellite-dish"></i> <span data-i18n="" data-en="Edge & Connectivity">Edge & Connectivité</span></h3>
       <ul class="arch-list">
         <li><i class="fas fa-check"></i> 86 nœuds edge computing sur site</li>
@@ -823,7 +850,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
         <li><i class="fas fa-check"></i> Latence terrain-cloud &lt;50ms</li>
       </ul>
     </div>
-    <div class="arch-layer" data-layer="Layer 2">
+    <div class="arch-layer reveal-left" data-layer="Layer 2">
       <h3><i class="fas fa-database"></i> <span data-i18n="" data-en="Data Platform">Plateforme Data</span></h3>
       <ul class="arch-list">
         <li><i class="fas fa-check"></i> Data lake unifié (4.8 TB/jour)</li>
@@ -832,7 +859,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
         <li><i class="fas fa-check"></i> API Gateway & service mesh</li>
       </ul>
     </div>
-    <div class="arch-layer" data-layer="Layer 3">
+    <div class="arch-layer reveal-left" data-layer="Layer 3">
       <h3><i class="fas fa-brain"></i> <span data-i18n="" data-en="AI & Analytics">IA & Analytics</span></h3>
       <ul class="arch-list">
         <li><i class="fas fa-check"></i> 18 modèles ML en production</li>
@@ -841,7 +868,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
         <li><i class="fas fa-check"></i> BI & dashboards temps réel</li>
       </ul>
     </div>
-    <div class="arch-layer" data-layer="Layer 4">
+    <div class="arch-layer reveal-left" data-layer="Layer 4">
       <h3><i class="fas fa-shield-halved"></i> <span data-i18n="" data-en="Security & Governance">Sécurité & Gouvernance</span></h3>
       <ul class="arch-list">
         <li><i class="fas fa-check"></i> Zero-trust architecture</li>
@@ -866,25 +893,25 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
 
 <!-- ═══ USE CASES ═══ -->
 <section class="section" id="cases">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge"><i class="fas fa-briefcase"></i> <span data-i18n="" data-en="Use Cases">Cas d'Usage</span></div>
     <h2 class="section-title" data-i18n="" data-en="Impact Across the Value Chain">Impact sur Toute la Chaîne</h2>
     <p class="section-sub" data-i18n="" data-en="How EnerTech solutions transform operations across EnerTchad filiales.">Comment les solutions EnerTech transforment les opérations dans toutes les filiales EnerTchad.</p>
   </div>
-  <div class="cases-grid">
-    <div class="case-card" data-r>
+  <div class="cases-grid stagger">
+    <div class="case-card card-3d reveal" data-r>
       <div class="case-filiale amont"><i class="fas fa-oil-well"></i> Amont · E&P</div>
       <h3 data-i18n="" data-en="Predictive Well Optimization">Optimisation Prédictive des Puits</h3>
       <p data-i18n="" data-en="AI-driven ESP monitoring and production optimization across 200+ wells in Doba basin. Real-time Digital Twin reduces intervention time by 60%.">Surveillance ESP pilotée par IA et optimisation de production sur 200+ puits du bassin de Doba. Digital Twin temps réel réduisant le temps d'intervention de 60%.</p>
       <div class="case-metric"><i class="fas fa-arrow-up"></i> +23% production optimisée</div>
     </div>
-    <div class="case-card" data-r>
+    <div class="case-card card-3d reveal" data-r>
       <div class="case-filiale midstream"><i class="fas fa-pipe-section"></i> Intermédiaire · Transport</div>
       <h3 data-i18n="" data-en="Pipeline Integrity Intelligence">Intelligence Intégrité Pipeline</h3>
       <p data-i18n="" data-en="ML-based corrosion prediction across 1,070 km Chad-Cameroon pipeline + Ronier-Djermaya. Djermaya refinery SCADA optimization for 20,000 bbl/day capacity. Automated ILI analysis, cathodic protection, and real-time anomaly detection via edge computing.">Prédiction de corrosion par ML sur 1 070 km pipeline Tchad-Cameroun + Ronier-Djermaya. Optimisation SCADA raffinerie Djermaya pour 20 000 bbl/jour. Analyse ILI automatisée, protection cathodique et détection anomalies temps réel par edge computing.</p>
       <div class="case-metric"><i class="fas fa-arrow-down"></i> −40% incidents pipeline</div>
     </div>
-    <div class="case-card" data-r>
+    <div class="case-card card-3d reveal" data-r>
       <div class="case-filiale aval"><i class="fas fa-gas-pump"></i> Aval · Distribution</div>
       <h3 data-i18n="" data-en="Smart Station Network">Réseau de Stations Intelligentes</h3>
       <p data-i18n="" data-en="IoT-enabled fuel management, automated inventory, and demand forecasting for 45+ stations. NRJ+ loyalty analytics driving personalized offers.">Gestion carburant IoT, inventaire automatisé et prévision de demande pour 45+ stations. Analytics fidélité NRJ+ pour offres personnalisées.</p>
@@ -895,7 +922,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
 
 <!-- ═══ CONTACT ═══ -->
 <section class="section contact" id="contact">
-  <div class="section-header">
+  <div class="section-header reveal">
     <div class="section-badge"><i class="fas fa-envelope"></i> Contact</div>
     <h2 class="section-title" data-i18n="" data-en="Get in Touch">Contactez-Nous</h2>
     <p class="section-sub" data-i18n="" data-en="Request a demo or discuss your digital transformation needs.">Demandez une démo ou discutez de vos besoins en transformation digitale.</p>
@@ -947,7 +974,7 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
       <h4>Contact</h4>
       <a href="mailto:tech@enertchad.td">tech@enertchad.td</a>
       <a href="tel:+23599298696">+235 99 29 86 96</a>
-      <a href="https://www.linkedin.com/company/enertchad" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="social-icon" href="https://www.linkedin.com/company/enertchad" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1321,6 +1348,17 @@ if(form){
   overlay.addEventListener('click',function(e){if(e.target===overlay)close()});
   var nav=document.querySelector('.nav');
   if(nav){var btn=document.createElement('button');btn.className='nav-link';btn.innerHTML='<i class="fas fa-search"></i> <span style="font-size:0.6rem;opacity:0.5">Ctrl+K</span>';btn.style.cssText='cursor:pointer';btn.addEventListener('click',open);nav.insertBefore(btn,nav.querySelector('.nav-cta'))}
+})();
+
+/* ═══ PREMIUM: Scroll-reveal ═══ */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-scale');
+  if(!els.length) return;
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+  },{threshold:0.15,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(el){obs.observe(el)});
 })();
 </script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').catch(function(){})}</script>
