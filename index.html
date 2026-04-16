@@ -146,29 +146,35 @@ body.light-theme .ticker-item .val{color:var(--accent)}
 .nav-cta:hover{background:var(--accent-light)!important;transform:translateY(-1px);box-shadow:0 4px 16px var(--accent-glow)}
 
 /* ═══ MEGA MENU ═══ */
-.mega-drop{position:fixed;top:0;left:0;right:0;padding:5.5rem 2rem 2rem;
-  background:rgba(13,10,26,0.97);backdrop-filter:blur(40px) saturate(1.6);-webkit-backdrop-filter:blur(40px) saturate(1.6);
-  border-bottom:1px solid rgba(139,92,246,0.12);box-shadow:0 40px 100px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.04);
-  opacity:0;pointer-events:none;transform:translateY(-12px);
-  transition:opacity 0.4s cubic-bezier(0.16,1,0.3,1),transform 0.4s cubic-bezier(0.16,1,0.3,1);z-index:999}
-.mega-drop::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,rgba(139,92,246,0.35) 50%,transparent 95%)}
+/* ═══ MEGA MENU — Premium Tabbed System ═══ */
+.mega-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0);z-index:998;opacity:0;pointer-events:none;transition:all 0.3s cubic-bezier(0.16,1,0.3,1)}
+.mega-overlay.active{background:rgba(0,0,0,0.4);opacity:1;pointer-events:auto;backdrop-filter:blur(4px)}
+.mega-drop{position:fixed;top:0;left:0;right:0;padding:0;background:rgba(13,10,26,0.98);backdrop-filter:blur(40px) saturate(1.6);-webkit-backdrop-filter:blur(40px) saturate(1.6);border-bottom:1px solid rgba(139,92,246,0.12);box-shadow:0 40px 100px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.04);opacity:0;pointer-events:none;clip-path:polygon(0 0,100% 0,100% 0,0 0);transition:opacity 0.4s cubic-bezier(0.16,1,0.3,1),clip-path 0.4s cubic-bezier(0.16,1,0.3,1);z-index:999}
+.nav-item.open .mega-drop{opacity:1;pointer-events:auto;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
 .mega-drop a{text-decoration:none}
-.nav-item.open .mega-drop{opacity:1;pointer-events:auto;transform:translateY(0)}
-.nav-item.open .mega-link{animation:megaItemIn 0.35s cubic-bezier(0.16,1,0.3,1) both}
-.nav-item.open .mega-link:nth-child(1){animation-delay:0.04s}
-.nav-item.open .mega-link:nth-child(2){animation-delay:0.08s}
-.nav-item.open .mega-link:nth-child(3){animation-delay:0.12s}
-.nav-item.open .mega-link:nth-child(4){animation-delay:0.16s}
-@keyframes megaItemIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.mega-close{position:absolute;top:1.25rem;right:2rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:50%;width:38px;height:38px;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;opacity:0.7;backdrop-filter:blur(8px)}
+.mega-header{padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;border-bottom:1px solid rgba(139,92,246,0.08)}
+.mega-header-title{font-family:var(--font-d);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent)}
+.mega-search{flex:1;max-width:300px}
+.mega-search input{width:100%;padding:0.6rem 1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(139,92,246,0.2);border-radius:var(--radius-sm);color:#fff;font-size:0.8rem;transition:all 0.3s ease}
+.mega-search input::placeholder{color:rgba(255,255,255,0.4)}
+.mega-search input:focus{outline:none;background:rgba(255,255,255,0.08);border-color:rgba(139,92,246,0.4);box-shadow:0 0 0 3px rgba(139,92,246,0.1)}
+.mega-close{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:50%;width:38px;height:38px;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;opacity:0.7;backdrop-filter:blur(8px);flex-shrink:0}
 .mega-close:hover{opacity:1;border-color:var(--accent);color:var(--accent);background:var(--accent-08);transform:rotate(90deg)}
-.mega-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:2rem;align-items:start}
-.mega-inner--2col{grid-template-columns:1fr 1px 1fr}
-.mega-divider{background:linear-gradient(180deg,transparent,rgba(139,92,246,0.18),transparent);align-self:stretch;opacity:0.8}
-.mega-col-title{font-family:var(--font-d);font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
-.mega-col-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(139,92,246,0.25),transparent)}
-.mega-link{display:flex;align-items:center;gap:0.9rem;padding:0.65rem 0.85rem;border-radius:var(--radius-sm);transition:all 0.3s cubic-bezier(0.22,0.61,0.36,1);margin-bottom:0.2rem;border:1px solid transparent;position:relative}
-.mega-link:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06);transform:translateX(4px);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.mega-body{padding:1.5rem 2rem;display:flex;gap:2rem;min-height:300px;max-height:calc(100vh - 150px);overflow:hidden}
+.mega-tabs{display:flex;flex-direction:column;gap:0.5rem;min-width:160px;border-right:1px solid rgba(139,92,246,0.08);padding-right:1.5rem;overflow-y:auto}
+.mega-tab{padding:0.75rem 1rem;background:transparent;border:none;text-align:left;cursor:pointer;font-size:0.8rem;font-weight:500;color:rgba(255,255,255,0.6);border-radius:var(--radius-sm);transition:all 0.3s ease;position:relative;padding-left:1.25rem}
+.mega-tab::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;background:var(--accent);border-radius:2px;transition:all 0.3s ease}
+.mega-tab:hover{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.8)}
+.mega-tab.active{color:var(--accent);background:rgba(139,92,246,0.08)}
+.mega-tab.active::before{height:16px}
+.mega-content{flex:1;overflow-y:auto;padding-right:1rem}
+.mega-tab-panel{display:none;opacity:0;transition:opacity 0.3s ease}
+.mega-tab-panel.active{display:block;opacity:1}
+.mega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:1.5rem}
+.mega-link{display:flex;align-items:flex-start;gap:1rem;padding:1rem;border-radius:var(--radius-sm);transition:all 0.3s cubic-bezier(0.22,0.61,0.36,1);border:1px solid transparent;position:relative}
+.mega-link:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.06);transform:translateX(4px)}
+.mega-link::after{content:'→';position:absolute;right:1rem;top:50%;transform:translateY(-50%) translateX(0);opacity:0;color:var(--accent);transition:all 0.3s ease}
+.mega-link:hover::after{opacity:1;transform:translateY(-50%) translateX(4px)}
 .mega-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;transition:all 0.3s ease;border:1px solid rgba(255,255,255,0.06);position:relative;overflow:hidden}
 .mega-icon::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 60%);pointer-events:none}
 .mega-link:hover .mega-icon{transform:scale(1.1) rotate(-3deg);border-color:rgba(255,255,255,0.12)}
@@ -180,26 +186,47 @@ body.light-theme .ticker-item .val{color:var(--accent)}
 .mega-badge-gold{background:var(--gold-12);color:var(--gold);border-color:var(--gold-20)}
 .mega-badge-green{background:rgba(16,185,129,0.12);color:var(--success);border-color:rgba(16,185,129,0.2)}
 .mega-badge-blue{background:rgba(46,134,222,0.12);color:var(--amont);border-color:rgba(46,134,222,0.2)}
-.mega-quick{display:flex;gap:0.75rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--white-06);grid-column:1/-1;flex-wrap:wrap}
-.mega-quick a{font-size:0.72rem;color:var(--text-light);transition:all 0.3s ease;display:inline-flex;align-items:center;gap:0.35rem;padding:0.4rem 0.85rem;border-radius:50px;border:1px solid var(--white-06);background:var(--white-02)}
-.mega-quick a:hover{color:var(--accent);border-color:var(--accent-25);background:var(--accent-06);transform:translateY(-1px)}
-.mega-quick a i{font-size:0.62rem;opacity:0.7}
+.mega-spotlight{background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(139,92,246,0.05));border:1px solid rgba(139,92,246,0.25);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:1.25rem}
+.mega-spotlight-icon{width:56px;height:56px;border-radius:14px;background:var(--accent-10);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.mega-spotlight-text h3{font-size:0.9rem;color:#fff;margin-bottom:0.3rem;font-weight:700}
+.mega-spotlight-text p{font-size:0.75rem;color:var(--text-light);line-height:1.5;margin-bottom:0.75rem}
+.mega-spotlight-cta{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-size:0.72rem;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;text-decoration:none}
+.mega-spotlight-cta:hover{background:var(--accent-light);transform:translateX(2px)}
+.mega-footer{padding:1.5rem 2rem;border-top:1px solid rgba(139,92,246,0.08);background:rgba(139,92,246,0.03)}
+.mega-quick{display:flex;gap:0.75rem;flex-wrap:wrap}
+.mega-quick a,.mega-footer-cta{font-size:0.72rem;color:var(--text-light);transition:all 0.3s ease;display:inline-flex;align-items:center;gap:0.35rem;padding:0.4rem 0.85rem;border-radius:50px;border:1px solid var(--white-06);background:var(--white-02);text-decoration:none;cursor:pointer}
+.mega-quick a:hover,.mega-footer-cta:hover{color:var(--accent);border-color:var(--accent-25);background:var(--accent-06);transform:translateY(-1px)}
+.mega-quick a i,.mega-footer-cta i{font-size:0.62rem;opacity:0.7}
 
 /* Light theme mega */
+body.light-theme .mega-overlay.active{background:rgba(0,0,0,0.2)}
 body.light-theme .mega-drop{background:rgba(255,255,255,0.98);box-shadow:0 40px 100px rgba(0,0,0,0.12)}
-body.light-theme .mega-drop::before{background:linear-gradient(90deg,transparent 5%,rgba(139,92,246,0.2) 50%,transparent 95%)}
+body.light-theme .mega-header{border-bottom-color:rgba(139,92,246,0.1)}
+body.light-theme .mega-search input{background:rgba(0,0,0,0.03);border-color:rgba(139,92,246,0.15);color:var(--text)}
+body.light-theme .mega-search input::placeholder{color:rgba(0,0,0,0.4)}
+body.light-theme .mega-search input:focus{background:rgba(0,0,0,0.05);border-color:rgba(139,92,246,0.3)}
+body.light-theme .mega-tabs{border-right-color:rgba(139,92,246,0.1)}
+body.light-theme .mega-tab{color:rgba(0,0,0,0.6)}
+body.light-theme .mega-tab:hover{background:rgba(0,0,0,0.03);color:rgba(0,0,0,0.8)}
+body.light-theme .mega-tab.active{color:var(--accent);background:rgba(139,92,246,0.1)}
 body.light-theme .mega-close{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.1);color:rgba(0,0,0,0.5)}
 body.light-theme .mega-close:hover{color:var(--accent);border-color:var(--accent)}
 body.light-theme .mega-link:hover{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.04)}
 body.light-theme .mega-link-text h4{color:var(--text)}
 body.light-theme .mega-link-text p{color:var(--text-sec)}
-body.light-theme .mega-divider{background:linear-gradient(180deg,transparent,rgba(139,92,246,0.12),transparent)}
+body.light-theme .mega-spotlight{background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(139,92,246,0.02));border-color:rgba(139,92,246,0.15)}
+body.light-theme .mega-footer{border-top-color:rgba(139,92,246,0.1);background:rgba(139,92,246,0.02)}
 @media(max-width:1024px){
-  .mega-drop{display:none}
-  .nav-item.open .mega-drop{display:block;padding:5rem 1.5rem 2rem}
-  .mega-inner,.mega-inner--2col{grid-template-columns:1fr!important}
-  .mega-divider{display:none}
-  .nav-item.open .mega-link{animation:none;opacity:1;transform:none}
+  .mega-drop{display:none;padding:0}
+  .nav-item.open .mega-drop{display:flex;flex-direction:column;height:100vh;max-height:100vh}
+  .mega-body{flex-direction:column;gap:0;min-height:auto}
+  .mega-tabs{flex-direction:row;border-right:none;border-bottom:1px solid rgba(139,92,246,0.08);min-width:auto;padding-right:0;padding-bottom:1rem;overflow-x:auto;overflow-y:hidden}
+  .mega-tab::before{left:auto;bottom:0;width:0;height:3px;transform:none}
+  .mega-tab.active::before{width:100%}
+  .mega-content{padding-right:0}
+  .mega-grid{grid-template-columns:1fr}
+  .mega-header{flex-direction:column;align-items:flex-start}
+  .mega-search{max-width:100%}
 }
 
 /* ═══ THEME TOGGLE ═══ */
@@ -455,74 +482,90 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
     <nav class="nav" role="navigation" aria-label="Navigation principale">
       <!-- Solutions Mega Menu -->
       <div class="nav-item" data-mega="solutions">
-        <button class="nav-link" aria-expanded="false" aria-haspopup="true" data-i18n="" data-en="Solutions">Solutions <i class="fas fa-chevron-down chevron"></i></button>
+        <a href="#" class="nav-link" aria-expanded="false" aria-haspopup="true" data-i18n="" data-en="Solutions">Solutions <i class="fas fa-chevron-down chevron"></i></a>
         <div class="mega-drop" role="menu" aria-label="Solutions technologiques">
-          <button class="mega-close" aria-label="Fermer le menu"><i class="fas fa-times"></i></button>
-          <div class="mega-inner">
-            <!-- Col 1: Intelligence -->
-            <div>
-              <div class="mega-col-title" data-i18n="" data-en="AI & Intelligence">IA & Intelligence</div>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-cube"></i></div>
-                <div class="mega-link-text"><h4>Digital Twin <span class="mega-badge mega-badge-purple">Core</span></h4><p data-i18n="" data-en="Real-time reservoir & pipeline modeling">Modélisation réservoir & pipeline temps réel</p></div>
-              </a>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-brain"></i></div>
-                <div class="mega-link-text"><h4>IA Prédictive <span class="mega-badge mega-badge-green">ML</span></h4><p data-i18n="" data-en="Predictive maintenance & production optimization">Maintenance prédictive & optimisation production</p></div>
-              </a>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-chart-line"></i></div>
-                <div class="mega-link-text"><h4>Data Analytics & BI</h4><p data-i18n="" data-en="Advanced dashboards & decision intelligence">Tableaux de bord avancés & aide à la décision</p></div>
-              </a>
+          <div class="mega-header">
+            <div class="mega-header-title" data-i18n="" data-en="Solutions">Solutions Technologiques</div>
+            <div class="mega-search">
+              <input type="text" placeholder="Rechercher une solution..." data-i18n="placeholder" data-en="Search solutions...">
             </div>
-            <div class="mega-divider"></div>
-            <!-- Col 2: Infrastructure -->
-            <div>
-              <div class="mega-col-title" data-i18n="" data-en="Infrastructure">Infrastructure</div>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-network-wired"></i></div>
-                <div class="mega-link-text"><h4>SCADA & IoT <span class="mega-badge mega-badge-purple">Indus</span></h4><p data-i18n="" data-en="Industrial control & 12,840+ connected sensors">Supervision industrielle & 12 840+ capteurs connectés</p></div>
-              </a>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-shield-halved"></i></div>
-                <div class="mega-link-text"><h4>Cybersécurité OT/IoT <span class="mega-badge mega-badge-gold">Critique</span></h4><p data-i18n="" data-en="Zero-trust security for operational systems">Sécurité zero-trust pour systèmes opérationnels</p></div>
-              </a>
-              <a href="#solutions" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-cloud"></i></div>
-                <div class="mega-link-text"><h4>Cloud & Edge</h4><p data-i18n="" data-en="Sovereign cloud + 86 edge nodes on-site">Cloud souverain + 86 nœuds edge sur site</p></div>
-              </a>
+            <button class="mega-close" aria-label="Fermer le menu"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="mega-body">
+            <div class="mega-tabs" role="tablist">
+              <button class="mega-tab active" data-tab="intelligence" role="tab" aria-selected="true" data-i18n="" data-en="Intelligence">IA & Intelligence</button>
+              <button class="mega-tab" data-tab="infrastructure" role="tab" aria-selected="false" data-i18n="" data-en="Infrastructure">Infrastructure</button>
+              <button class="mega-tab" data-tab="groupe" role="tab" aria-selected="false" data-i18n="" data-en="Group">Groupe</button>
             </div>
-            <div class="mega-divider"></div>
-            <!-- Col 3: Groupe -->
-            <div>
-              <div class="mega-col-title" data-i18n="" data-en="EnerTchad Group">Groupe EnerTchad</div>
-              <a href="https://enertchad-groupe.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:var(--gold-10);color:var(--gold)"><i class="fas fa-building"></i></div>
-                <div class="mega-link-text"><h4>Site Groupe</h4><p data-i18n="" data-en="Corporate hub — governance, ESG, academy">Hub corporate — gouvernance, ESG, académie</p></div>
-              </a>
-              <a href="https://enertchad-amont-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:rgba(46,134,222,0.1);color:var(--amont)"><i class="fas fa-oil-well"></i></div>
-                <div class="mega-link-text"><h4>Amont · E&P <span class="mega-badge mega-badge-blue">Filiale</span></h4><p data-i18n="" data-en="Exploration & production — Doba, Bongor">Exploration & production — Doba, Bongor</p></div>
-              </a>
-              <a href="https://enertchad-midstream-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:rgba(14,165,233,0.1);color:var(--midstream)"><i class="fas fa-pipe-section"></i></div>
-                <div class="mega-link-text"><h4>Midstream · Transport</h4><p data-i18n="" data-en="1,070 km pipeline, SCADA, fleet">Pipeline 1 070 km, SCADA, flotte</p></div>
-              </a>
-              <a href="https://enertchad-aval-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:rgba(217,119,6,0.1);color:var(--aval)"><i class="fas fa-gas-pump"></i></div>
-                <div class="mega-link-text"><h4>Aval · Distribution</h4><p data-i18n="" data-en="Service stations, LPG, NRJ+ loyalty">Stations-service, GPL, fidélité NRJ+</p></div>
-              </a>
-              <a href="https://enertchad-energies.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
-                <div class="mega-icon" style="background:rgba(16,185,129,0.1);color:#10B981"><i class="fas fa-bolt"></i></div>
-                <div class="mega-link-text"><h4>Énergies · Électricité <span class="mega-badge mega-badge-green">Filiale</span></h4><p data-i18n="" data-en="Gas power plants, solar, microgrids, BESS">Centrales gaz, solaire, micro-grids, BESS</p></div>
-              </a>
+            <div class="mega-content">
+              <!-- Tab 1: Intelligence -->
+              <div class="mega-tab-panel active" data-panel="intelligence">
+                <div class="mega-grid">
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-cube"></i></div>
+                    <div class="mega-link-text"><h4>Digital Twin <span class="mega-badge mega-badge-purple">Core</span></h4><p data-i18n="" data-en="Real-time reservoir & pipeline modeling">Modélisation réservoir & pipeline temps réel</p></div>
+                  </a>
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-brain"></i></div>
+                    <div class="mega-link-text"><h4>IA Prédictive <span class="mega-badge mega-badge-green">ML</span></h4><p data-i18n="" data-en="Predictive maintenance & production optimization">Maintenance prédictive & optimisation production</p></div>
+                  </a>
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-chart-line"></i></div>
+                    <div class="mega-link-text"><h4>Data Analytics & BI</h4><p data-i18n="" data-en="Advanced dashboards & decision intelligence">Tableaux de bord avancés & aide à la décision</p></div>
+                  </a>
+                </div>
+              </div>
+              <!-- Tab 2: Infrastructure -->
+              <div class="mega-tab-panel" data-panel="infrastructure">
+                <div class="mega-grid">
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-network-wired"></i></div>
+                    <div class="mega-link-text"><h4>SCADA & IoT <span class="mega-badge mega-badge-purple">Indus</span></h4><p data-i18n="" data-en="Industrial control & 12,840+ connected sensors">Supervision industrielle & 12 840+ capteurs connectés</p></div>
+                  </a>
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-shield-halved"></i></div>
+                    <div class="mega-link-text"><h4>Cybersécurité OT/IoT <span class="mega-badge mega-badge-gold">Critique</span></h4><p data-i18n="" data-en="Zero-trust security for operational systems">Sécurité zero-trust pour systèmes opérationnels</p></div>
+                  </a>
+                  <a href="#solutions" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--accent-10);color:var(--accent)"><i class="fas fa-cloud"></i></div>
+                    <div class="mega-link-text"><h4>Cloud & Edge</h4><p data-i18n="" data-en="Sovereign cloud + 86 edge nodes on-site">Cloud souverain + 86 nœuds edge sur site</p></div>
+                  </a>
+                </div>
+              </div>
+              <!-- Tab 3: Groupe -->
+              <div class="mega-tab-panel" data-panel="groupe">
+                <div class="mega-grid">
+                  <a href="https://enertchad-groupe.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:var(--gold-10);color:var(--gold)"><i class="fas fa-building"></i></div>
+                    <div class="mega-link-text"><h4>Site Groupe</h4><p data-i18n="" data-en="Corporate hub — governance, ESG, academy">Hub corporate — gouvernance, ESG, académie</p></div>
+                  </a>
+                  <a href="https://enertchad-amont-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:rgba(46,134,222,0.1);color:var(--amont)"><i class="fas fa-oil-well"></i></div>
+                    <div class="mega-link-text"><h4>Amont · E&P <span class="mega-badge mega-badge-blue">Filiale</span></h4><p data-i18n="" data-en="Exploration & production — Doba, Bongor">Exploration & production — Doba, Bongor</p></div>
+                  </a>
+                  <a href="https://enertchad-midstream-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:rgba(14,165,233,0.1);color:var(--midstream)"><i class="fas fa-pipe-section"></i></div>
+                    <div class="mega-link-text"><h4>Midstream · Transport</h4><p data-i18n="" data-en="1,070 km pipeline, SCADA, fleet">Pipeline 1 070 km, SCADA, flotte</p></div>
+                  </a>
+                  <a href="https://enertchad-aval-vercel-app.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:rgba(217,119,6,0.1);color:var(--aval)"><i class="fas fa-gas-pump"></i></div>
+                    <div class="mega-link-text"><h4>Aval · Distribution</h4><p data-i18n="" data-en="Service stations, LPG, NRJ+ loyalty">Stations-service, GPL, fidélité NRJ+</p></div>
+                  </a>
+                  <a href="https://enertchad-energies.vercel.app" target="_blank" rel="noopener" class="mega-link" role="menuitem">
+                    <div class="mega-icon" style="background:rgba(16,185,129,0.1);color:#10B981"><i class="fas fa-bolt"></i></div>
+                    <div class="mega-link-text"><h4>Énergies · Électricité <span class="mega-badge mega-badge-green">Filiale</span></h4><p data-i18n="" data-en="Gas power plants, solar, microgrids, BESS">Centrales gaz, solaire, micro-grids, BESS</p></div>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mega-quick">
-            <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard Live</a>
-            <a href="#platform"><i class="fas fa-layer-group"></i> Architecture</a>
-            <a href="#cases"><i class="fas fa-briefcase"></i> Use Cases</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+          <div class="mega-footer">
+            <div class="mega-quick">
+              <a href="#dashboard" class="mega-footer-cta"><i class="fas fa-tachometer-alt"></i> Dashboard Live</a>
+              <a href="#platform" class="mega-footer-cta"><i class="fas fa-layer-group"></i> Architecture</a>
+              <a href="#cases" class="mega-footer-cta"><i class="fas fa-briefcase"></i> Use Cases</a>
+              <a href="#contact" class="mega-footer-cta"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
           </div>
         </div>
       </div>
@@ -543,6 +586,8 @@ body.light-theme .contact-form input::placeholder,body.light-theme .contact-form
     <button class="mob-tog" aria-label="Menu mobile" aria-expanded="false"><i class="fas fa-bars"></i></button>
   </div>
 </header>
+
+<div class="mega-overlay" id="megaOverlay"></div>
 
 <!-- ═══ MOBILE NAV ═══ -->
 <div class="mobile-nav" id="mobileNav" role="dialog" aria-label="Navigation mobile">
@@ -886,38 +931,54 @@ window.addEventListener('scroll',function(){
   lastScroll=window.scrollY;
 },{passive:true});
 
-/* ═══ MEGA MENU ═══ */
-function closeAll(){
-  document.querySelectorAll('.nav-item').forEach(function(i){
-    i.classList.remove('open');
-    var btn=i.querySelector('[aria-expanded]');
-    if(btn)btn.setAttribute('aria-expanded','false');
+/* ═══ MEGA MENU — Premium Tabbed System ═══ */
+(function(){
+  var navItems=document.querySelectorAll('.nav-item[data-mega]');
+  var overlay=document.getElementById('megaOverlay');
+  function closeAll(){
+    navItems.forEach(function(ni){ni.classList.remove('open')});
+    if(overlay) overlay.classList.remove('active');
+  }
+  navItems.forEach(function(ni){
+    var trigger=ni.querySelector(':scope > a');
+    var drop=ni.querySelector('.mega-drop');
+    var closeBtn=drop?drop.querySelector('.mega-close'):null;
+    if(!trigger||!drop) return;
+    trigger.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();
+      var wasOpen=ni.classList.contains('open');
+      closeAll();
+      if(!wasOpen){ni.classList.add('open');if(overlay) overlay.classList.add('active');
+        var tabs=drop.querySelectorAll('.mega-tab');var panels=drop.querySelectorAll('.mega-tab-panel');
+        tabs.forEach(function(t,i){t.classList.toggle('active',i===0);t.setAttribute('aria-selected',i===0?'true':'false')});
+        panels.forEach(function(p,i){p.classList.toggle('active',i===0)});
+      }
+    });
+    if(closeBtn) closeBtn.addEventListener('click',function(e){e.stopPropagation();closeAll()});
+    var tabs=drop.querySelectorAll('.mega-tab');
+    tabs.forEach(function(tab){
+      function activate(){
+        var target=tab.getAttribute('data-tab');
+        tabs.forEach(function(t){t.classList.remove('active');t.setAttribute('aria-selected','false')});
+        tab.classList.add('active');tab.setAttribute('aria-selected','true');
+        drop.querySelectorAll('.mega-tab-panel').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-panel')===target)});
+      }
+      tab.addEventListener('mouseenter',activate);tab.addEventListener('click',activate);
+      tab.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}
+        if(e.key==='ArrowDown'){e.preventDefault();var n=tab.nextElementSibling;if(n&&n.classList.contains('mega-tab')){n.focus();n.dispatchEvent(new Event('mouseenter'))}}
+        if(e.key==='ArrowUp'){e.preventDefault();var p=tab.previousElementSibling;if(p&&p.classList.contains('mega-tab')){p.focus();p.dispatchEvent(new Event('mouseenter'))}}
+      });
+      tab.setAttribute('tabindex','0');
+    });
+    drop.querySelectorAll('.mega-link,.mega-spotlight-cta,.mega-footer-cta,.mega-quick a').forEach(function(a){a.addEventListener('click',function(){closeAll()})});
+    var si=drop.querySelector('.mega-search input');
+    if(si) si.addEventListener('input',function(){var q=this.value.toLowerCase().trim();drop.querySelectorAll('.mega-link').forEach(function(l){l.style.display=(!q||(l.textContent||'').toLowerCase().indexOf(q)!==-1)?'':'none'})});
   });
-}
-document.querySelectorAll('.nav-item[data-mega]').forEach(function(item){
-  var btn=item.querySelector('.nav-link');
-  btn.addEventListener('click',function(e){
-    e.preventDefault();e.stopPropagation();
-    var isOpen=item.classList.contains('open');
-    closeAll();
-    if(!isOpen){
-      item.classList.add('open');
-      btn.setAttribute('aria-expanded','true');
-    }
-  });
-});
-document.querySelectorAll('.mega-close').forEach(function(btn){
-  btn.addEventListener('click',function(e){e.stopPropagation();closeAll();});
-});
-document.querySelectorAll('.mega-drop a[href^="#"]').forEach(function(a){
-  a.addEventListener('click',function(){closeAll();});
-});
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-item'))closeAll();
-});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')closeAll();
-});
+  if(overlay) overlay.addEventListener('click',closeAll);
+  document.addEventListener('click',function(e){if(!e.target.closest('.nav-item[data-mega]')&&!e.target.closest('.mega-overlay')) closeAll()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape') closeAll()});
+})();
 
 /* ═══ MOBILE NAV ═══ */
 var mobileNav=document.getElementById('mobileNav');
